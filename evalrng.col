@@ -1,0 +1,32 @@
+       IDENTIFICATION DIVISION.
+       PROGRAM-ID. sum.
+       DATA DIVISION.
+       WORKING-STORAGE SECTION.
+       01 WS1-FIRST PIC 9999999999 VALUE 200.
+       01 WS2-SECOND PIC 9999999999 VALUE 300.
+       01 WS3-SUM PIC 9999999999 VALUE 0.
+       01 WS4-SUMIF PIC 9 VALUE 0.
+       01 WS5-MYRANDOM PIC 9 VALUE 0.
+       01 WS6-EVALRNG PIC 9 VALUE 0.
+       PROCEDURE DIVISION.
+           DISPLAY WS1-FIRST.
+           DISPLAY WS2-SECOND.
+           ADD WS1-FIRST TO WS3-SUM.
+           ADD WS2-SECOND TO WS3-SUM.
+           DISPLAY WS3-SUM.
+           IF WS4-SUMIF = '1' THEN
+               DISPLAY 'HELLO 1'
+           ELSE DISPLAY 'HELLO 0'
+           END-IF.
+           COMPUTE WS5-MYRANDOM = FUNCTION RANDOM * 2
+           DISPLAY WS5-MYRANDOM.
+           COMPUTE WS6-EVALRNG = FUNCTION RANDOM * 3
+           EVALUATE WS6-EVALRNG
+               WHEN '0'
+                   DISPLAY 'EVALRNG-0'
+               WHEN '1'
+                   DISPLAY 'EVALRNG-1'
+               WHEN '2'
+                   DISPLAY 'EVALRNG-2'
+           END-EVALUATE
+           STOP RUN.
